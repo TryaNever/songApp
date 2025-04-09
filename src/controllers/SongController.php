@@ -9,7 +9,7 @@ class SongController extends Controller
     public function __construct() {
         $this->songServiceBDD = EntityManager::class;
     }
-    public function getAllSongs() {
+    public function index() {
         $data = $this->songServiceBDD->executeQuery('SELECT * FROM `chanson` ch
 INNER JOIN categorie ca ON ch.id_categorie = ca.id_categorie
 INNER JOIN chanteur cha ON cha.id_chanteur = ch.id_chanteur');
