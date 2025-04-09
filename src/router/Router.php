@@ -22,7 +22,7 @@ class Router
      */
     public function dispatch($request_uri)
     {
-        if (!preg_match("/^\/chambre\/\d+$/", $request_uri)) {
+        if (!preg_match("/^\/song\/del\/\d+$/", $request_uri)) {
             if (!array_key_exists($request_uri, $this->routes)) {
                 http_response_code(404);
                 include './src/views/errors/page404.php';
@@ -38,9 +38,9 @@ class Router
          *
          * @param string $request_uri The incoming request URI.
          */
-        if (preg_match("/^\/chambre\/\d+$/", $request_uri)) {
-            $controller = 'RoomController';
-            $action = 'reservation';
+        if (preg_match("/^\/song\/del\/\d+$/", $request_uri)) {
+            $controller = 'SongController';
+            $action = 'deleteSong';
             $uriSegments = explode('/', $request_uri);
             $segment1 = $uriSegments[2];
         }
