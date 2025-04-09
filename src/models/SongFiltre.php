@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\models;
 
 use App\Config\Database;
 
-/**
- * Template Model Class for User.
- *
- * Note: This is a template and should not be used as-is in production.
- */
-class User extends Database
+
+class SongFiltre extends Database
 {
     /**
      * Errors array to store validation messages.
@@ -19,30 +15,32 @@ class User extends Database
     private $errors = [];
 
     /**
-     * User properties.
+     * SongFiltre properties.
      */
-    private $firstName;
-    private $lastName;
-    private $email;
-    private $password;
-    private $role;
-    private $clientId;
+    private $titre;
+    private $chanteur;
 
-    /**
-     * Set the user's first name.
-     *
-     * @param string $firstName The first name of the user.
-     * @return void
-     */
-    public function setFirstName($firstName)
+
+    public function setTitre($titre)
     {
-        if (strlen($firstName) < 3 || strlen($firstName) > 20 || !preg_match('/^[a-z -]+$/i', $firstName)) {
-            // Error: The field format is incorrect.
-            $this->errors['firstName'] = "The field format is incorrect";
+        if (strlen($titre) > 20 ) {
+            $this->errors['error'] = "Le champ titre est trop long";
             return;
         }
-        $this->firstName = htmlspecialchars($firstName);
+        $this->titre = htmlspecialchars($titre);
     }
+    public function setChanteur($chanteur)
+    {
+        if (strlen($chanteur) > 20 ) {
+            $this->errors['error'] = "Le champ chanteur est trop long";
+            return;
+        }
+        if (empty($this->titre) && empty($chanteur)) {
+            $this->errors['error'] = "Les deux champs sont vides";
+        }
+        $this->titre = htmlspecialchars($chanteur);
+    }
+
 
     /**
      * Get validation errors.
