@@ -1,0 +1,13 @@
+{% extends 'layout/home-layout.html.twig' %}
+
+{% block app %}
+    <div class="flex justify-center h-screen items-center flex-col">
+        {% for song in songs %}
+            <div class="border w-1/2 m-3">
+                <div class="flex justify-between"><p>{{ song.titre }}</p><p>sorti le {{ song.date }}</p><a href='/song/del/{{ song.id_chanson }}'>supprimer</a></div>
+                <p>Chanteur : {{ song.nom_chanteur }}</p>
+                <p>Catégorie : {{ song.libelle_categorie }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
