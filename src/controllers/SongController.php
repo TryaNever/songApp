@@ -48,14 +48,21 @@ class SongController extends Controller
             $validation = new Validator();
             $model = $validation->validate($_POST, Song::class);
             if (empty($model->getErrors())) {
-                $this->songServiceBDD->executeQuery('INSERT INTO `chanson`(`titre`, `date`, `id_chanteur`, `id_categorie`) VALUES (:titre,:date,:id_chanteur,:id_categorie)', [':titre' => $_POST['titre'],':date' => $_POST['date'], ':id_chanteur' => $_POST['chanteur'], ':id_categorie' => $_POST['categorie'] ]);
+                $this->songServiceBDD->executeQuery('INSERT INTO `chanson`(`titre`, `date`, `id_chanteur`, `id_categorie`) VALUES (:titre,:date,:id_chanteur,:id_categorie)', [':titre' => $_POST['titre'], ':date' => $_POST['date'], ':id_chanteur' => $_POST['chanteur'], ':id_categorie' => $_POST['categorie']]);
                 return $this->render('createSong.html.twig', ['categories' => $categorie, 'chanteurs' => $chanteur, 'succes' => true]);
 
             }
             return $this->render('createSong.html.twig', ['categories' => $categorie, 'chanteurs' => $chanteur, 'error' => $model->getErrors()]);
         }
-        var_dump($_POST);
 
         return $this->render('createSong.html.twig', ['categories' => $categorie, 'chanteurs' => $chanteur]);
+    }
+
+    public function deleteSong($id)
+    {
+
+        $this->songServiceBDD->executeQuery('DELETE FROM `chanson` WHERE id_chanson = :id', [':id' => $id]);
+        header('location:/song');
+
     }
 }
