@@ -2,37 +2,20 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Home{% endblock %}</title>
-  <link rel="shortcut icon" href="{% block favicon %}/public/img/favicon.ico{% endblock %}" type="image/x-icon">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style>
-    @keyframes gradient-flow {
-      0% {
-        background-position: 0% 50%;
-      }
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home</title>
+    <link rel="shortcut icon" href="{% block favicon %}/public/img/favicon.ico{% endblock %}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    .animated-gradient {
-      background: linear-gradient(-45deg, #35259b, #be3c7d, #5bbfe0, #6809c0);
-      background-size: 400% 400%;
-      animation: gradient-flow 15s ease infinite;
-    }
-  </style>
 </head>
 
-<body class="min-h-screen animated-gradient flex items-center justify-center p-4">
-  {% block app %}
-  {% endblock %}
+<body class="min-h-screen p-4">
+<header class="flex w-screen justify-between p-5"><a href="/"><img src="../../../public/img/favicon.ico" alt=""
+                                                                   class="w-20"></a><a href="/">Home</a><a href="/song">song</a><a
+            href="/addSong">Add Song</a></header>
+{% block app %}
+{% endblock %}
 </body>
 
 
