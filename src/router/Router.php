@@ -11,6 +11,7 @@ class Router
 {
     private $routes = [
         '/' => "HomeController@index",
+        '/song' => "SongController@index",
     ];
 
     /**

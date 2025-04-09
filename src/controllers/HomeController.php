@@ -2,12 +2,7 @@
 
 namespace App\Controllers;
 
-/**
- * Home Controller Template.
- *
- * This controller is responsible for handling the homepage request.
- * Note: This is a template and can be customized for your needs.
- */
+
 class HomeController extends Controller
 {
     /**
