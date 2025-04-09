@@ -1,0 +1,35 @@
+{% extends 'layout/home-layout.html.twig' %}
+
+{% block app %}
+    <div class="flex h-screen items-center flex-col">
+        {% if succes %}
+            <p class="m-5 text-2xl">Vous avez ajouté une chanson</p>
+        {% endif %}
+        <form method="post" class="flex flex-col w-[50vw] h-[50vh] justify-between">
+            <h3>Ajouter une chanson</h3>
+            <label for="titre">Titre de la chanson</label>
+            <input type="text" name="titre" id="titre" class="border">
+            {% if error.titre %}
+                <p>il y a une erreur sur le titre</p>
+            {% endif %}
+            <label for="date">Date de sortie</label>
+            <input type="date" name="date" id="date" class="border">
+            {% if error.date %}
+                <p>il y a une erreur sur le champ date</p>
+            {% endif %}
+            <label for="chanteur">Chanteur</label>
+            <select name="chanteur" id="chanteur" class="border">
+                {% for chanteur in chanteurs %}
+                    <option value="{{ chanteur.id_chanteur }}">{{ chanteur.nom_chanteur }}</option>
+                {% endfor %}
+            </select>
+            <label for="categorie">Categorie</label>
+            <select name="categorie" id="categorie" class="border">
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id_categorie }}">{{ categorie.libelle_categorie }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+{% endblock %}

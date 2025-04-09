@@ -52,36 +52,13 @@ class SongFiltre extends Database
         return $this->errors;
     }
 
-    /**
-     * Get user data for general use.
-     *
-     * @return array Associative array containing user data.
-     */
-    public function getData()
+    public function getTitre()
     {
-        return [
-            'firstName' => $this->firstName,
-            'lastName'  => $this->lastName,
-            'email'     => $this->email,
-            'password'  => $this->password,
-            'role'      => $this->role
-        ];
+        return $this->titre;
     }
 
-    /**
-     * Get user data for editing purposes.
-     *
-     * @return array Associative array containing user data with client ID.
-     */
-    public function getDataEdit()
+    public function getChanteur()
     {
-        return [
-            'clientId'  => $this->clientId,
-            'firstName' => $this->firstName,
-            'lastName'  => $this->lastName,
-            'email'     => $this->email,
-            'password'  => $this->password,
-            'role'      => $this->role
-        ];
+        return $this->chanteur;
     }
 }
